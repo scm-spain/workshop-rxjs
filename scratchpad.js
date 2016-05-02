@@ -1,3 +1,3 @@
 function doSomething() {
-    return  Rx.Observable.just(1);
+    return  Rx.Observable.from([1, 2, 3, 4, 5, 6, 7, 8]);
 }
