@@ -3,11 +3,36 @@
     <script src="vendor/rx.all.js"></script>
     <script src="./scratchpad.js"></script>
     <script>
-        doSomething()
-                .filter(function (x) { return x % 2 == 0 })
-                .map(function (x) { return x * 10; })
-                .map(function (x) { console.log(x); return x })
-                .subscribe();
+        //        numbers()
+        //                .filter(function (x) { return x % 2 == 0 })
+        //                .flatMap(x10)
+        //                .map(function (x) { console.log(x); return x })
+        //                .subscribe();
+
+        window.onload = function () {
+            var input = document.getElementById("uppercase-input");
+            var eventValue = function (event) {
+                return event.target.value;
+            };
+            var largerThan3 = function (value) {
+                return value.length > 3;
+            };
+            var toUpperCase = function (value) {
+                return value.toUpperCase();
+            };
+            var logToConsole = function (value) {
+                console.log(value);
+            };
+
+            var observable = Rx.Observable.fromEvent(input, 'keydown')
+                    .sample(500).map(eventValue).filter(largerThan3).map(toUpperCase).map(logToConsole);
+
+            observable.subscribe();
+        };
+
     </script>
 </head>
+<body>
+<input type="text" id="uppercase-input"/>
+</body>
 </html>
