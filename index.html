@@ -2,5 +2,8 @@
 <head>
     <script src="vendor/rx.all.js"></script>
     <script src="./scratchpad.js"></script>
+    <script>
+        doSomething().map(function (x) { return x * 10; }).map(function (x) { alert(x); return x }).subscribe();
+    </script>
 </head>
 </html>
