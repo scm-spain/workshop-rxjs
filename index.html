@@ -3,12 +3,6 @@
     <script src="vendor/rx.all.js"></script>
     <script src="./scratchpad.js"></script>
     <script>
-        //        numbers()
-        //                .filter(function (x) { return x % 2 == 0 })
-        //                .flatMap(x10)
-        //                .map(function (x) { console.log(x); return x })
-        //                .subscribe();
-
         window.onload = function () {
             var input = document.getElementById("uppercase-input");
             var eventValue = function (event) {
@@ -25,7 +19,7 @@
             };
 
             var observable = Rx.Observable.fromEvent(input, 'keydown')
-                    .sample(500).map(eventValue).filter(largerThan3).map(toUpperCase).map(logToConsole);
+                    .sample(500).map(eventValue).filter(largerThan3).flatMap(suggestions).map(toUpperCase).map(logToConsole);
 
             observable.subscribe();
         };

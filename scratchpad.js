@@ -1,7 +1,17 @@
-function numbers() {
-    return Rx.Observable.from([1, 2, 3, 4, 5, 6, 7, 8]);
-}
 
-function x10(number) {
-    return Rx.Observable.just(number * 10);
+function suggestions(text) {
+    return Rx.Observable.from([
+        'Ruby',
+        'Python',
+        'JavaScript',
+        'Java',
+        'COBOL',
+        'Scala',
+        'Kotlin',
+        'ActionScript',
+        'JavaGay',
+        'Gaython'
+    ]).filter(function (language) {
+        return language.toLowerCase().indexOf(text.toLowerCase()) !== -1;
+    }).take(5);
 }
